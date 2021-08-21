@@ -24,7 +24,7 @@
     <input id="name" type="text" class="form-control" v-model="fishName">
      </div>
     <input id="nr" type="hidden" class="form-control" v-model="fishNr">
-    <button class="btn btn-success mb-3" @click.prevent="getFormValues ()">
+    <button class="btn btn-success mb-3" @click.prevent="getFormValues()">
     Save
   </button>
    <button class="btn btn-secondary mb-3" @click.prevent="pushApi()">
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
    data() {
      return {
@@ -83,11 +84,17 @@ export default {
       this.fishName = ''
       this.fishNr = 1
       console.log(this.tank)
-      this.pushApi();
+     
   },
   pushApi() {
-    
-  }
+   //example api to post fish data to, just returns back the JSON that was sent, can be viewed i the console.
+    //axios.post(`https://jsonplaceholder.typicode.com/users`, { tank })
+    //.then(res => {
+      //console.log(res);
+      console.log(this.tank);
+    //})
+
+}
  
 }
 }
