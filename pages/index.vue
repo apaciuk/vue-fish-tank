@@ -2,13 +2,13 @@
   <div class="container h-100">
     <div class="row h-100">
       <div class="col-12 mx-auto">
-        <div class="jumbotron text-center mt-5" v-bind:class="Tank">
+        <div class="jumbotron text-center mt-5">
        <a href="https://www.xhostcom.com" target="_blank" title="Fish">
                                         <img src="@/assets/img/logo_small.png" alt="Fish">
    </a>
    <p class="lead">Yip, its an app to add and manipulate actual fish and their food!</p>
    <h3>
-   Input Fish Species, and give it name, and no of items.
+   Input Fish Species, and give it name.
    </h3>
    </div>
    <div class="mb-5">
@@ -23,16 +23,16 @@
   <label for="name">Name Of Fish</label>
     <input id="name" type="text" class="form-control" v-model="fishName">
      </div>
-    <div class="form-group">
-    <label for="nr">Number of fishes</label>
     <input id="nr" type="hidden" class="form-control" v-model="fishNr">
-    </div>
     <button class="btn btn-success mb-3" @click.prevent="getFormValues ()">
     Save
   </button>
+   <button class="btn btn-secondary mb-3" @click.prevent="pushApi()">
+    Send To Api
+  </button>
   </form>
    <h4>Type: {{ selectedFish.fishType }}</h4>
-   <h4>Name: {{ fishe }}</h4>
+   <h4>Name: {{ fish }}</h4>
    <h4>Feed Weight: {{ selectedFish.feedMass }}</h4>
    <h4 v-if ="selectedFish.feedMass">
    Total: {{ selectedFish.feedMass * fishNr }}
@@ -82,8 +82,14 @@ export default {
       this.selectedFish = ''
       this.fishName = ''
       this.fishNr = 1
-    }
+      console.log(this.tank)
+      this.pushApi();
+  },
+  pushApi() {
+    
   }
+ 
+}
 }
 
 </script>
