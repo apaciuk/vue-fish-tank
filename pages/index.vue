@@ -1,45 +1,87 @@
 <template>
   <div class="container h-100">
-    <div class="row align-items-center h-100">
+    <div class="row h-100">
       <div class="col-12 mx-auto">
-        <div class="jumbotron text-center">
-            <a href="https://www.xhostcom.com" target="_blank" title="Fish">
+        <div class="jumbotron text-center mt-5" v-bind:class="Tank">
+       <a href="https://www.xhostcom.com" target="_blank" title="Fish">
                                         <img src="@/assets/img/logo_small.png" alt="Fish">
-         </a>
-          <p class="lead">Yip, its an app to add and manipulate actual fish.</p>
-           <div>
-          </div>
-          <form>
-           <div class="form-group mt-5">
-          <input v-model="selected" class="form-control mb-4" placeholder="Type new fish species and add to tank" />
-            <span>Fish Species {{ selected }}</span>
-          </div>
-          <div id="v-model-fish" class="form-group mt-5 mb-4">
-          <select class="form-control" v-model="selected">
-           <option disabled value="">Please select fish</option>
-          <option value="Gold Fish">Gold Fish</option>
-          <option value="Babel Fish">Babel Fish</option>
-          <option value="Angel Fish">Angel Fish</option>
-         </select>
-         </div>
-         <button class="btn btn-success bt-sm">Add Fish</button>
-       
-
-     </form>
+   </a>
+   <p class="lead">Yip, its an app to add and manipulate actual fish and their food!</p>
+   <h3>
+   Input Fish Species, and give it name, and no of items.
+   </h3>
+   </div>
+   <div class="mb-5">
+  <form>
+   <div class="form-group">
+   <select v-model="selectedFish" class="form-control">
+    <option disabled value="">Please select fish</option>
+    <option v-for="fish in fishes" :key="fish.name" :value="fish">{{fish.fishType}}</option>
+    </select>
+   </div>
+     <div class="form-group">
+  <label for="name">Name Of Fish</label>
+    <input id="name" type="text" class="form-control" v-model="fishName">
+     </div>
+    <div class="form-group">
+    <label for="nr">Number of fishes</label>
+    <input id="nr" type="hidden" class="form-control" v-model="fishNr">
+    </div>
+    <button class="btn btn-success mb-3" @click.prevent="getFormValues ()">
+    Save
+  </button>
+  </form>
+   <h4>Type: {{ selectedFish.fishType }}</h4>
+   <h4>Name: {{ fishe }}</h4>
+   <h4>Feed Weight: {{ selectedFish.feedMass }}</h4>
+   <h4 v-if ="selectedFish.feedMass">
+   Total: {{ selectedFish.feedMass * fishNr }}
+   </h4>
+   <h3>{{ tank }}</h3>
+   </div>
+  </div>  
   </div>
-      
-</div>
-        </div>
-      </div>
+  </div>
   
 </template>
 
 <script>
-
 export default {
    data() {
-    return {
-      selected: 'Gold Fish'
+     return {
+   fishes: [
+      {
+        fishType: "Gold Fish",
+        feedMass: 0.1
+      }, 
+      {
+        fishType: "Angel Fish",
+        feedMass: 0.2
+      }, 
+      {
+        fishType: "Babel Fish",
+        feedMass: 0.3
+      }
+    ],
+    selectedFish: '',
+    fishName: '',
+    fishNr: 1,
+    tank: []
+     }
+  },
+  computed: {
+    fish: function () {
+      return this.fishName
+    }
+  },
+  methods: {
+    getFormValues () {
+      this.selectedFish.fishName = this.fishName
+      this.selectedFish.fishNr = this.fishNr
+      this.tank.push(this.selectedFish)
+      this.selectedFish = ''
+      this.fishName = ''
+      this.fishNr = 1
     }
   }
 }
@@ -50,7 +92,7 @@ export default {
   height: 100vh;
 }
 .jumbotron {
-  background-color: #fff;
+  background-color: rgb(238, 228, 228);
 }
 
 </style>

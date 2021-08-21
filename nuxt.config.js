@@ -55,7 +55,7 @@ module: {
     },
   ],
 },
-
+buildModules: ['@nuxt/typescript-build'],
 
   /*
   ** Build configuration
