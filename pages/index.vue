@@ -3,48 +3,47 @@
     <div class="row align-items-center h-100">
       <div class="col-12 mx-auto">
         <div class="jumbotron text-center">
-            <a href="https://uifort.com" target="_blank" title="UiFort">
-                                        <img src="@/assets/img/logo-uifort.png" alt="UiFort">
+            <a href="https://www.xhostcom.com" target="_blank" title="Fish">
+                                        <img src="@/assets/img/logo_small.png" alt="Fish">
          </a>
-          <app-logo/>
-          <h1 class="display-4">nuxt-bootstrap-uikit</h1>
-          <p class="lead">Nuxt.js project + Bootstrap Vue Framework<br />
-          UIKit Examples</p>
-          <p class="lead">
-            <a
-              href="https://getbootstrap.com/"
-              role="button"
-              target="_blank"
-              class="btn btn-info btn-lg">Bootstrap Documentation</a>
-            <a
-              href="https://github.com/twbs/bootstrap"
-              role="button"
-              target="_blank"
-              class="btn btn-primary btn-lg">Bootstrap GitHub</a>
-          </p>
-          <p class="lead">
-            <a
-              href="https://nuxtjs.org/"
-              role="button"
-              target="_blank"
-              class="btn btn-success btn-lg">Nuxt.js Documentation</a>
-            <a
-              href="https://github.com/nuxt/nuxt.js"
-              role="button"
-              target="_blank"
-              class="btn btn-warning btn-lg">Nuxt.js GitHub</a>
-          </p>
+          <p class="lead">Yip, its an app to add and manipulate actual fish.</p>
+           <div>
+          </div>
+          <form>
+           <div class="form-group mt-5">
+          <input v-model="selected" class="form-control mb-4" placeholder="Type new fish species and add to tank" />
+            <span>Fish Species {{ selected }}</span>
+          </div>
+          <div id="v-model-fish" class="form-group mt-5 mb-4">
+          <select class="form-control" v-model="selected">
+           <option disabled value="">Please select fish</option>
+          <option value="Gold Fish">Gold Fish</option>
+          <option value="Babel Fish">Babel Fish</option>
+          <option value="Angel Fish">Angel Fish</option>
+         </select>
+         </div>
+         <button class="btn btn-success bt-sm">Add Fish</button>
+       
+
+     </form>
+  </div>
+      
+</div>
         </div>
       </div>
-    </div>
-  </div>
+  
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
 
 export default {
+   data() {
+    return {
+      selected: 'Gold Fish'
+    }
+  }
 }
+
 </script>
 <style>
 #__layout {
@@ -53,5 +52,6 @@ export default {
 .jumbotron {
   background-color: #fff;
 }
+
 </style>
 
