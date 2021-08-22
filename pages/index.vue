@@ -47,7 +47,6 @@
 
 <script>
 import axios from 'axios';
-import Tank from '../classes/tank.js'
 export default {
    data() {
      return {
@@ -87,23 +86,15 @@ export default {
       console.log(this.tank)
      
   },
+  //example Mocklab api to post fish data to, just returns back the JSON that was sent and 200 code, can be viewed in the console.
   pushApi() {
-    const postTank = new Tank(this.tank);
+    const postTank = this.tank;
       axios
-  .post('../classes/tank', postTank)
+  .post('http://1eyr9.mocklab.io/tank', postTank)
   .then(function (response) {
     console.log(response);
   })
-
-   //example api to post fish data to, just returns back the JSON that was sent, can be viewed i the console.
-    //axios.post(`https://jsonplaceholder.typicode.com/users`, { tank })
-    //.then(res => {
-      //console.log(res);
-      //console.log(this.tank);
-    //})
-
 }
- 
 }
 }
 

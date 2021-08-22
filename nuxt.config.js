@@ -45,7 +45,7 @@ modules: [
 ],
 axios: {
   // See https://github.com/nuxt-community/axios-module#options
-  baseURL: process.env.API_URL || 'https://jsonplaceholder.typicode.com'
+  baseURL: process.env.API_URL || 'http://1eyr9.mocklab.io'
 },
 module: {
   rules: [
