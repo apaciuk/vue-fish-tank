@@ -66,7 +66,7 @@ export default {
     ],
     selectedFish: '',
     fishName: '',
-    fishNr: 1,
+    fishNr: 0,
     tank: []
      }
   },
@@ -77,12 +77,18 @@ export default {
   },
   methods: {
     getFormValues () {
+      if (this.fishType === "Gold Fish") {
+      this.feedMass = 0.1
+      } else if (this.fishType === "Angel Fish") {
+         this.feedMass = 0.2
+      } else 
+      this.feedMass = 0.3
       this.selectedFish.fishName = this.fishName
       this.selectedFish.fishNr = this.fishNr
       this.tank.push(this.selectedFish)
       this.selectedFish = ''
       this.fishName = ''
-      this.fishNr = 1
+      this.fishNr = ''
       console.log(this.tank)
      
   },
@@ -90,7 +96,7 @@ export default {
   pushApi() {
     const postTank = this.tank;
       axios
-  .post('http://1eyr9.mocklab.io/tank', postTank)
+  .post('https://1eyr9.mocklab.io/tank', postTank)
   .then(function (response) {
     console.log(response);
   })
