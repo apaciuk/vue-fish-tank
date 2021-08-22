@@ -86,7 +86,7 @@ export default {
       console.log(this.tank)
      
   },
-  //example Mocklab api to post fish data to, just returns back the JSON that was sent and 200 code, can be viewed in the console.
+  //example Mocklab api to post tank data to, just returns back the JSON that was sent and 200 code, can be viewed in the console.
   pushApi() {
     const postTank = this.tank;
       axios

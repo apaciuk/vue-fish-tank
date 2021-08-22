@@ -1,5 +1,7 @@
 # fish-tank-app
 App to add and maanipulate actual fish
+
+Add more fish types and their feed mass in fish data object, tank data sent to Mocklab api.
 ## Build Setup
 
 ``` bash
